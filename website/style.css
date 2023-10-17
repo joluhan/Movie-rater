@@ -60,7 +60,7 @@ nav a {
 .first_page {
     position: relative;
     /* replace background-image with url of api */
-    background-image: url("images/background.jpg");
+    background-image: url("/images/background.jpg");
     background-size: cover;
     background-position: center;
 }
