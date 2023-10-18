@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const mostRatedBackground = data.results[0].image_url;
 
             mostRatedSection.style.backgroundImage = `url(${mostRatedBackground})`;
-            mostRatedSection.querySelector('h3').innerText = mostRatedTitle;
-            mostRatedSection.querySelector('p').innerText = `Synopsis: ${mostRatedSummary}`;
+            mostRatedSection.querySelector('.first_page').innerText = mostRatedTitle;
+            mostRatedSection.querySelector('.description_most_rated').innerText = `Synopsis: ${mostRatedSummary}`;
         });
 
     // Fetch categories and top 3 movies for each category

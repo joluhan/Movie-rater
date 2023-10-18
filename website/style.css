@@ -60,8 +60,8 @@ nav a {
 .first_page {
     position: relative;
     /* replace background-image with url of api */
-    background-image: url("/images/background.jpg");
-    background-size: cover;
+    /* background-image: url("/images/background.jpg"); */
+    background-size: auto;
     background-position: center;
 }
 
@@ -73,6 +73,7 @@ nav a {
     background-color: rgba(17, 21, 28, 0.5);
     padding: 20px;
     box-sizing: border-box;
+    /* background-size:auto; */
 }
 
 /* Most Rated section styling */
