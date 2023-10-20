@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const modal = document.getElementById('movieModal');
         modal.innerHTML = `
           <img src="${movieDetails.image_url}" alt="${movieDetails.title}" class="movie-image">
+          <div class="movie-info">
           <h2>${movieDetails.title}</h2>
           <p><strong>Genre:</strong> ${movieDetails.genre}</p>
           <p><strong>Date de sortie:</strong> ${movieDetails.date_published}</p>
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <p><strong>Pays d'origine:</strong> ${movieDetails.countries.join(', ')}</p>
           <p><strong>Box Office:</strong> ${movieDetails.box_office}</p>
           <p><strong>Résumé:</strong> ${movieDetails.description}</p>
+          </div>
           <button id="closeModal">Fermer</button>
         `;
         
