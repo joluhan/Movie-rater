@@ -26,6 +26,30 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   
+    function renderModal(movieDetails) {
+        const modal = document.getElementById('movieModal');
+        modal.innerHTML = `
+          <img src="${movieDetails.image_url}" alt="${movieDetails.title}" class="movie-image">
+          <h2>${movieDetails.title}</h2>
+          <p><strong>Genre:</strong> ${movieDetails.genre}</p>
+          <p><strong>Date de sortie:</strong> ${movieDetails.date_published}</p>
+          <p><strong>Rated:</strong> ${movieDetails.rated}</p>
+          <p><strong>IMDb Score:</strong> ${movieDetails.imdb_score}</p>
+          <p><strong>Réalisateur:</strong> ${movieDetails.director}</p>
+          <p><strong>Acteurs:</strong> ${movieDetails.actors.join(', ')}</p>
+          <p><strong>Durée:</strong> ${movieDetails.duration} mins</p>
+          <p><strong>Pays d'origine:</strong> ${movieDetails.countries.join(', ')}</p>
+          <p><strong>Box Office:</strong> ${movieDetails.box_office}</p>
+          <p><strong>Résumé:</strong> ${movieDetails.description}</p>
+          <button id="closeModal">Fermer</button>
+        `;
+        
+        // Add event listener to close modal
+        document.getElementById('closeModal').addEventListener('click', () => {
+          modal.style.display = 'none';
+        });
+      }
+  
     function handleDetailsButtonClick(event) {
       const movieId = event.target.dataset.movieId;
       if (movieId) {
