@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: #141414; */
+    background-color: #141414;
     padding: 1rem;
     position: sticky;
     top: 0;
