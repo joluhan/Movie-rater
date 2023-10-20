@@ -1,91 +1,66 @@
-// When the document is fully loaded, execute the following code
 document.addEventListener('DOMContentLoaded', function () {
-  
-    // API base URL
     const apiBaseUrl = 'http://localhost:8000/api/v1';
-    
-    // API endpoint for top-rated movies
-    const topRatedEndpoint = '/titles/?sort_by=-imdb_score&limit=8';
-    
-    // Fetch data from API
+  
     async function fetchData(endpoint) {
       try {
         const response = await fetch(`${apiBaseUrl}${endpoint}`);
-        const data = await response.json();
-        return data;
+        return await response.json();
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     }
-    
-    // Render movie details into HTML
-    function renderMovieDetails(sectionId, movies) {
+  
+    function renderMovieDetails(sectionId, movies, genre) {
       const section = document.getElementById(sectionId);
-      section.innerHTML = '';
+      section.innerHTML = `<h2>${genre}</h2>`;
+      
       movies.forEach(movie => {
         const movieDiv = document.createElement('div');
         movieDiv.classList.add('movie');
         movieDiv.innerHTML = `
           <img src="${movie.image_url}" alt="${movie.title}" class="movie-image">
           <h3 class="movie-title">${movie.title}</h3>
-          <button class="details-button" data-movie-id="${movie.id}">Détails</button>
+          <button class="details-button" data-movie-id="${movie.id}">Details</button>
         `;
         section.appendChild(movieDiv);
       });
     }
-    
-    // Handle details button click
+  
     function handleDetailsButtonClick(event) {
       const movieId = event.target.dataset.movieId;
       if (movieId) {
         fetchMovieDetails(movieId);
       }
     }
-    
-    // Fetch detailed movie information
+  
     async function fetchMovieDetails(movieId) {
-      const movieDetailsEndpoint = `/titles/${movieId}`;
-      const movieDetails = await fetchData(movieDetailsEndpoint);
+      const movieDetails = await fetchData(`/titles/${movieId}`);
       renderModal(movieDetails);
       document.getElementById('movieModal').style.display = 'flex';
     }
-    
-    // Delegate click event to handle details button clicks
+  
     document.addEventListener('click', function(event) {
       if (event.target.classList.contains('details-button')) {
         handleDetailsButtonClick(event);
       }
     });
   
-    // Fetch and display top-rated movies
-    fetchData(topRatedEndpoint).then(data => {
+    fetchData('/titles/?sort_by=-imdb_score&limit=8').then(data => {
       const [bestMovie, ...topRatedMovies] = data.results;
-      const bestMovieId = bestMovie.id;
-      
-      renderMovieDetails('bestMovieDetails', [bestMovie]);
-      renderMovieDetails('topRatedMovies', topRatedMovies);
+      renderMovieDetails('bestMovieDetails', [bestMovie], 'Best Movie');
+      renderMovieDetails('topRatedMovies', topRatedMovies, 'Top Rated Movies');
+    });
   
-      // Event Listener for the best movie button
-      document.getElementById('bestMovieButton').addEventListener('click', () => {
-        fetchMovieDetails(bestMovieId);
+    const categories = [
+      {endpoint: '/titles/?genre=action&sort_by=-imdb_score&limit=7', sectionId: 'category1Movies', genre: 'Action'},
+      {endpoint: '/titles/?genre=drama&sort_by=-imdb_score&limit=7', sectionId: 'category2Movies', genre: 'Drama'},
+      {endpoint: '/titles/?genre=comedy&sort_by=-imdb_score&limit=7', sectionId: 'category3Movies', genre: 'Comedy'}
+    ];
+  
+    categories.forEach(category => {
+      fetchData(category.endpoint).then(data => {
+        renderMovieDetails(category.sectionId, data.results, category.genre);
       });
     });
-  
-    // Fetch and display category movies
-    const category1Endpoint = '/titles/?genre=action&sort_by=-imdb_score&limit=7';
-    fetchData(category1Endpoint).then(data => {
-      renderMovieDetails('category1Movies', data.results);
-    });
-  
-    const category2Endpoint = '/titles/?genre=drama&sort_by=-imdb_score&limit=7';
-    fetchData(category2Endpoint).then(data => {
-      renderMovieDetails('category2Movies', data.results);
-    });
-  
-    const category3Endpoint = '/titles/?genre=comedy&sort_by=-imdb_score&limit=7';
-    fetchData(category3Endpoint).then(data => {
-      renderMovieDetails('category3Movies', data.results);
-    });
-  
   });
   
