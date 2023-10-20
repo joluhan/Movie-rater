@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const apiBaseUrl = 'http://localhost:8000/api/v1';
-  
+    
     async function fetchData(endpoint) {
       try {
         const response = await fetch(`${apiBaseUrl}${endpoint}`);
@@ -9,7 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
         console.error('Error fetching data:', error);
       }
     }
-  
+
+    // Render movie details
     function renderMovieDetails(sectionId, movies, genre) {
       const section = document.getElementById(sectionId);
       section.innerHTML = `<h2>${genre}</h2>`;
@@ -25,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function () {
         section.appendChild(movieDiv);
       });
     }
-  
+
+    // Render modal with movie details
     function renderModal(movieDetails) {
         const modal = document.getElementById('movieModal');
         modal.innerHTML = `
@@ -43,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
           <p><strong>Box Office:</strong> ${movieDetails.box_office}</p>
           <p><strong>Résumé:</strong> ${movieDetails.description}</p>
           </div>
-          <button id="closeModal">Fermer</button>
+          <button id="closeModal">Close</button>
         `;
         
         // Add event listener to close modal
@@ -51,38 +53,42 @@ document.addEventListener('DOMContentLoaded', function () {
           modal.style.display = 'none';
         });
       }
-  
+    // Handle click on details button
     function handleDetailsButtonClick(event) {
       const movieId = event.target.dataset.movieId;
       if (movieId) {
         fetchMovieDetails(movieId);
       }
     }
-  
+    // Fetch movie details and render modal 
     async function fetchMovieDetails(movieId) {
       const movieDetails = await fetchData(`/titles/${movieId}`);
       renderModal(movieDetails);
       document.getElementById('movieModal').style.display = 'flex';
     }
   
+    // Add event listener to document to handle click on details button
     document.addEventListener('click', function(event) {
       if (event.target.classList.contains('details-button')) {
         handleDetailsButtonClick(event);
       }
     });
   
+    // Fetch data for best movie and top rated movies
     fetchData('/titles/?sort_by=-imdb_score&limit=8').then(data => {
       const [bestMovie, ...topRatedMovies] = data.results;
       renderMovieDetails('bestMovieDetails', [bestMovie], 'Best Movie');
       renderMovieDetails('topRatedMovies', topRatedMovies, 'Top Rated Movies');
     });
-  
+    
+    // Define categories
     const categories = [
       {endpoint: '/titles/?genre=action&sort_by=-imdb_score&limit=7', sectionId: 'category1Movies', genre: 'Action'},
       {endpoint: '/titles/?genre=drama&sort_by=-imdb_score&limit=7', sectionId: 'category2Movies', genre: 'Drama'},
       {endpoint: '/titles/?genre=comedy&sort_by=-imdb_score&limit=7', sectionId: 'category3Movies', genre: 'Comedy'}
     ];
   
+    // Fetch data for each category and render it
     categories.forEach(category => {
       fetchData(category.endpoint).then(data => {
         renderMovieDetails(category.sectionId, data.results, category.genre);

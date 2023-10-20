@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #141414;
+    /* background-color: #141414; */
     padding: 1rem;
     position: sticky;
     top: 0;
@@ -24,17 +24,24 @@ body {
     font-weight: bold;
 }
 
-.header-buttons button {
+/* .header-buttons button {
     margin-left: 1rem;
     padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid #fff;
-    color: #fff;
+    margin-top: 0.5rem;
+    background-color: #e50914;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 3px;
     cursor: pointer;
+    text-decoration: none;
+} */
+
+.header-buttons a {
+    text-decoration: none;
 }
 
 .header-buttons button:hover {
-    background-color: #fff;
+    background-color: #ffffff;
     color: #000;
 }
 
@@ -60,7 +67,7 @@ h2 {
     border-radius: 5px;
 }
 
-.details-button {
+.header-buttons button, .details-button {
     margin-top: 0.5rem;
     background: #e50914;
     color: #fff;
@@ -74,9 +81,6 @@ h2 {
     background: #ff0a16;
 }
 
-/* Modal */
-/* ... (other styles) */
-
 /* Modal styles */
 #movieModal {
     display: none;
@@ -84,6 +88,7 @@ h2 {
     background-color: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 20px;
+    padding-top: 5%;
     position: fixed;
     top: 0;
     left: 0;
@@ -99,6 +104,8 @@ h2 {
   .movie-image {
     /* max-width: 30%; */
     margin-right: 20px;
+    width: auto; /* Set image width to 50% */
+    height: 50%; /* Maintain aspect ratio */
   }
   
   .movie-info {
@@ -107,46 +114,12 @@ h2 {
   
   #closeModal {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 15px;
+    right: 15px;
     background-color: red;
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 1rem;
   }
   
-  /* ... (other styles) */
-  
-/* .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: #141414;
-    padding: 2rem;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 5px;
-}
-
-#closeModalButton {
-    background: #e50914;
-    color: #fff;
-    padding: 0.5rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-    float: right;
-}
-
-#closeModalButton:hover {
-    background: #ff0a16;
-} */
