@@ -91,6 +91,9 @@ h2 {
     height: 100%;
     overflow: auto;
     z-index: 9999;
+    max-width: 97%; /* Limit the modal width */
+    margin: auto; /* Center the modal */
+    top: 1%;
   }
   
   .movie-image {
