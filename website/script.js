@@ -1,3 +1,6 @@
+// TO DO
+// make sure to fetch the 7 best movies + also for categories
+
 document.addEventListener('DOMContentLoaded', function () {
     const apiBaseUrl = 'http://localhost:8000/api/v1';
     
