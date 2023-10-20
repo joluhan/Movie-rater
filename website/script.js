@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
 
-    // Render modal with movie details
+    // Render modal with movie details ------- ADD ERROR MANAGEMENT IF NO IMG AVAILABLE
     function renderModal(movieDetails) {
         const modal = document.getElementById('movieModal');
         modal.innerHTML = `
