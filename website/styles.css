@@ -81,6 +81,37 @@ h2 {
     background: #ff0a16;
 }
 
+#bestMovieDetails .movie-image {
+    width: 300px; /* 50% bigger than original */
+}
+
+#bestMovieDetails .movie-title {
+    font-size: 4em; /* 200% bigger */
+}
+
+#bestMovieDetails .movie-resume {
+    font-size: 1.2em;
+}
+.categoryMovies {
+    display: flex;
+    overflow: hidden;
+    border: 2px solid white;
+}
+
+.movie {
+    flex-shrink: 0;
+    width: 25%;
+}
+
+.arrow {
+    cursor: pointer;
+}
+.arrow-left,
+.arrow-right {
+    display: none;
+}
+
+
 /* Modal styles */
 #movieModal {
     display: none;

@@ -16,16 +16,21 @@ document.addEventListener('DOMContentLoaded', function () {
       section.innerHTML = `<h2>${genre}</h2>`;
       
       movies.forEach(movie => {
-        const movieDiv = document.createElement('div');
-        movieDiv.classList.add('movie');
-        movieDiv.innerHTML = `
-          <img src="${movie.image_url}" alt="${movie.title}" class="movie-image">
-          <h3 class="movie-title">${movie.title}</h3>
-          <button class="details-button" data-movie-id="${movie.id}">Details</button>
-        `;
-        section.appendChild(movieDiv);
+          const movieDiv = document.createElement('div');
+          movieDiv.classList.add('movie');
+
+          // Updated HTML layout
+          movieDiv.innerHTML = `
+              <img src="${movie.image_url}" alt="${movie.title}" class="movie-image">
+              <h3 class="movie-title">${movie.title}</h3>
+              <p class="movie-resume">${movie.summary}</p> <!-- Added this line for Résumé -->
+              <button class="details-button" data-movie-id="${movie.id}">Details</button>
+          `;
+
+          section.appendChild(movieDiv);
       });
     }
+
 
     // Render modal with movie details
     function renderModal(movieDetails) {
@@ -60,6 +65,31 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchMovieDetails(movieId);
       }
     }
+
+    function addArrows(sectionId) {
+      const section = document.getElementById(sectionId);
+      const arrowLeft = document.createElement('div');
+      const arrowRight = document.createElement('div');
+      arrowLeft.classList.add('arrow', 'arrow-left');
+      arrowRight.classList.add('arrow', 'arrow-right');
+      section.prepend(arrowLeft);
+      section.appendChild(arrowRight);
+    
+      arrowLeft.addEventListener('click', function() {
+        section.scrollBy({ left: -200, behavior: 'smooth' });
+      });
+      
+      arrowRight.addEventListener('click', function() {
+        section.scrollBy({ left: 200, behavior: 'smooth' });
+      });
+    }
+    
+    addArrows('topRatedMovies');
+    addArrows('category1Movies');
+    addArrows('category2Movies');
+    addArrows('category3Movies');
+
+    
     // Fetch movie details and render modal 
     async function fetchMovieDetails(movieId) {
       const movieDetails = await fetchData(`/titles/${movieId}`);
