@@ -12,7 +12,6 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* background-color: #141414; */
     padding: 1rem;
     position: sticky;
     top: 0;
@@ -23,18 +22,6 @@ body {
     font-size: 1.5rem;
     font-weight: bold;
 }
-
-/* .header-buttons button {
-    margin-left: 1rem;
-    padding: 0.5rem 1rem;
-    margin-top: 0.5rem;
-    background-color: #e50914;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    text-decoration: none;
-} */
 
 .header-buttons a {
     text-decoration: none;
@@ -54,63 +41,61 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Glass-like Boxes */
+.glass-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+/* Best Movie Layout */
+#bestMovieDetails {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#bestMovieDetails img {
+    flex-basis: 50%;
+}
+
+#bestMovieDetails div {
+    flex-basis: 50%;
+    padding-left: 1rem;
+}
+
 /* Movie Section */
 .movie {
     display: inline-block;
-    /* width: calc(100% / 4 - 1rem); */
-    margin: 0 0.5rem 3rem;
+    margin: 0 0.25rem 1.5rem;
     text-align: center;
 }
 
-.movie-image {
-    /* width: 100%; */
-    border-radius: 5px;
-}
-
-.header-buttons button, .details-button {
-    margin-top: 0.5rem;
-    background: #e50914;
-    color: #fff;
-    padding: 0.5rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 3px;
-}
-
-.details-button:hover {
-    background: #ff0a16;
-}
-
-#bestMovieDetails .movie-image {
-    width: 300px; /* 50% bigger than original */
-}
-
-#bestMovieDetails .movie-title {
-    font-size: 4em; /* 200% bigger */
-}
-
-#bestMovieDetails .movie-resume {
-    font-size: 1.2em;
-}
+/* Carousel Styling */
 .categoryMovies {
+    position: relative;
     display: flex;
     overflow: hidden;
-    border: 2px solid white;
-}
-
-.movie {
-    flex-shrink: 0;
-    width: 25%;
 }
 
 .arrow {
     cursor: pointer;
-}
-.arrow-left,
-.arrow-right {
-    display: none;
+    position: absolute;
+    top: 50%;
+    font-size: 2rem;
+    z-index: 1;
+    opacity: 0.6;
 }
 
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
 
 /* Modal styles */
 #movieModal {

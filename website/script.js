@@ -15,22 +15,26 @@ document.addEventListener('DOMContentLoaded', function () {
       const section = document.getElementById(sectionId);
       section.innerHTML = `<h2>${genre}</h2>`;
       
+      // Create a div for the carousel
+      const carouselDiv = document.createElement('div');
+      carouselDiv.classList.add('categoryMovies');
+
       movies.forEach(movie => {
-          const movieDiv = document.createElement('div');
-          movieDiv.classList.add('movie');
+        const movieDiv = document.createElement('div');
+        movieDiv.classList.add('movie', 'glass-box'); // Added 'glass-box'
 
-          // Updated HTML layout
-          movieDiv.innerHTML = `
-              <img src="${movie.image_url}" alt="${movie.title}" class="movie-image">
-              <h3 class="movie-title">${movie.title}</h3>
-              <p class="movie-resume">${movie.summary}</p> <!-- Added this line for Résumé -->
-              <button class="details-button" data-movie-id="${movie.id}">Details</button>
-          `;
+        movieDiv.innerHTML = `
+          <img src="${movie.image_url}" alt="${movie.title}" class="movie-image">
+          <h3 class="movie-title">${movie.title}</h3>
+          <p class="movie-resume">${movie.summary}</p>
+          <button class="details-button" data-movie-id="${movie.id}">Details</button>
+        `;
 
-          section.appendChild(movieDiv);
+        carouselDiv.appendChild(movieDiv);  // Append movieDiv to carouselDiv
       });
-    }
 
+      section.appendChild(carouselDiv);  // Append carouselDiv to section
+    }
 
     // Render modal with movie details
     function renderModal(movieDetails) {
@@ -108,6 +112,11 @@ document.addEventListener('DOMContentLoaded', function () {
     fetchData('/titles/?sort_by=-imdb_score&limit=8').then(data => {
       const [bestMovie, ...topRatedMovies] = data.results;
       renderMovieDetails('bestMovieDetails', [bestMovie], 'Best Movie');
+     // Special Treatment for Best Movie
+      const bestMovieDiv = document.getElementById('bestMovieDetails');
+      bestMovieDiv.classList.remove('categoryMovies');  // Remove categoryMovies class
+      bestMovieDiv.firstChild.classList.add('glass-box');  // Add 'glass-box'
+
       renderMovieDetails('topRatedMovies', topRatedMovies, 'Top Rated Movies');
     });
     

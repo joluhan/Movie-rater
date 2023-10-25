@@ -21,47 +21,55 @@
 <main>
 
     <!-- Best Movie Section -->
-    <section id="bestMovieSection">
+    <section id="bestMovieSection" class="glass-box">
         <h2></h2>
-        <div id="bestMovieDetails">
+        <div id="bestMovieDetails" class="best-movie-layout">
             <!-- Movie details will be populated dynamically -->
         </div>
-        <!-- <button id="bestMovieButton">Détails</button> -->
     </section>
 
     <!-- Top Rated Movies Section -->
-    <section id="topRatedSection">
+    <section id="topRatedSection" class="glass-box movie-carousel">
         <h2></h2>
-        <div id="topRatedMovies">
+        <div class="arrow prev"></div>
+        <div id="topRatedMovies" class="carousel-items">
             <!-- Top rated movies will be populated dynamically -->
         </div>
-    </section>
-<div id="categorySection">
-    <!-- Category 1 Section -->
-    <section class="category1Movies" id="category1Movies">
-        <h2 id="category1Title" class="category1Title">Sci-Fi</h2>
-        <div class="categoryMovies">
-            <!-- Category 1 movies will be populated dynamically -->
-        </div>
+        <div class="arrow next"></div>
     </section>
 
-    <!-- Category 2 Section -->
-    <section class="category2Movies" id="category2Movies">
-        <h2 id="category2Title" class="category2Title">Tragique Comédie</h2>
-        <div class="categoryMovies">
-            <!-- Category 2 movies will be populated dynamically -->
-        </div>
-    </section>
+    <div id="categorySection">
+        <!-- Category 1 Section -->
+        <section class="category1Movies glass-box movie-carousel" id="category1Movies">
+            <h2 id="category1Title" class="category1Title">Sci-Fi</h2>
+            <div class="arrow prev"></div>
+            <div class="categoryMovies carousel-items">
+                <!-- Category 1 movies will be populated dynamically -->
+            </div>
+            <div class="arrow next"></div>
+        </section>
 
-    <!-- Category 3 Section -->
-    <section class="category3Movies" id="category3Movies">
-        <h2 id="category3Title" class="category3Title">Comédie</h2>
-        <div class="categoryMovies">
-            <!-- Category 3 movies will be populated dynamically -->
-        </div>
-    </section>
-    
-</div>
+        <!-- Category 2 Section -->
+        <section class="category2Movies glass-box movie-carousel" id="category2Movies">
+            <h2 id="category2Title" class="category2Title">Tragique Comédie</h2>
+            <div class="arrow prev"></div>
+            <div class="categoryMovies carousel-items">
+                <!-- Category 2 movies will be populated dynamically -->
+            </div>
+            <div class="arrow next"></div>
+        </section>
+
+        <!-- Category 3 Section -->
+        <section class="category3Movies glass-box movie-carousel" id="category3Movies">
+            <h2 id="category3Title" class="category3Title">Comédie</h2>
+            <div class="arrow prev"></div>
+            <div class="categoryMovies carousel-items">
+                <!-- Category 3 movies will be populated dynamically -->
+            </div>
+            <div class="arrow next"></div>
+        </section>
+        
+    </div>
 </main>
 
 <!-- Movie Modal -->
@@ -69,7 +77,6 @@
     <!-- Modal content here -->
 </div>
   
-
 <script src="script.js"></script>
 </body>
 </html>
