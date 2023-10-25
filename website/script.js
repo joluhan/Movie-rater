@@ -72,19 +72,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addArrows(sectionId) {
       const section = document.getElementById(sectionId);
+
       const arrowLeft = document.createElement('div');
       const arrowRight = document.createElement('div');
+
       arrowLeft.classList.add('arrow', 'arrow-left');
       arrowRight.classList.add('arrow', 'arrow-right');
+
       section.prepend(arrowLeft);
       section.appendChild(arrowRight);
     
       arrowLeft.addEventListener('click', function() {
-        section.scrollBy({ left: -200, behavior: 'smooth' });
+        section.scrollBy({ left: -1000, behavior: 'smooth' });
       });
       
       arrowRight.addEventListener('click', function() {
-        section.scrollBy({ left: 200, behavior: 'smooth' });
+        section.scrollBy({ left: 1000, behavior: 'smooth' });
       });
     }
     
