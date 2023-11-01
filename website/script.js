@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Render movie details
     function renderMovieDetails(sectionId, movies, genre) {
-      const section = document.getElementById(sectionId);
+      const section = document.getElementById(sectionId); //change section
       section.innerHTML = `<h2>${genre}</h2>`;
       
       // Create a div for the carousel
@@ -73,31 +73,31 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    function addArrows(sectionId) {
-      const section = document.getElementById(sectionId);
+    // function addArrows(sectionId) {
+    //   const section = document.getElementById(sectionId);
 
-      const arrowLeft = document.createElement('div');
-      const arrowRight = document.createElement('div');
+    //   const arrowLeft = document.createElement('div');
+    //   const arrowRight = document.createElement('div');
 
-      arrowLeft.classList.add('arrow', 'arrow-left');
-      arrowRight.classList.add('arrow', 'arrow-right');
+    //   arrowLeft.classList.add('arrow', 'arrow-left');
+    //   arrowRight.classList.add('arrow', 'arrow-right');
 
-      section.prepend(arrowLeft);
-      section.appendChild(arrowRight);
+    //   section.prepend(arrowLeft);
+    //   section.appendChild(arrowRight);
     
-      arrowLeft.addEventListener('click', function() {
-        section.scrollBy({ left: -1000, behavior: 'smooth' });
-      });
+    //   arrowLeft.addEventListener('click', function() {
+    //     section.scrollBy({ left: -1000, behavior: 'smooth' });
+    //   });
       
-      arrowRight.addEventListener('click', function() {
-        section.scrollBy({ left: 1000, behavior: 'smooth' });
-      });
-    }
+    //   arrowRight.addEventListener('click', function() {
+    //     section.scrollBy({ left: 1000, behavior: 'smooth' });
+    //   });
+    // }
     
-    addArrows('topRatedMovies');
-    addArrows('category1Movies');
-    addArrows('category2Movies');
-    addArrows('category3Movies');
+    // addArrows('topRatedMovies');
+    // addArrows('category1Movies');
+    // addArrows('category2Movies');
+    // addArrows('category3Movies');
 
     
     // Fetch movie details and render modal 
