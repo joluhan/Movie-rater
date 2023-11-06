@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JustSteamIt</title>
+    <title>JustStreamIt</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <!-- Sticky Header -->
 <header class="sticky-header">
-    <div class="site-name">JustSteamIt</div>
-    <div class="header-buttons">
-        <button id="homeButton"><a href="#bestMovieSection">Home</a></button>
-        <button id="categoriesButton"> <a href="#categorySection">Categories</a></button>
-    </div>
+    <div class="site-name">JustStreamIt</div>
+    <nav class="header-buttons">
+        <a href="#bestMovieSection" class="button">Accueil</a>
+        <a href="#categoriesSection" class="button">Catégories</a>
+    </nav>
 </header>
 
 <!-- Main Content -->
@@ -22,61 +22,78 @@
 
     <!-- Best Movie Section -->
     <section id="bestMovieSection" class="glass-box">
-        <h2></h2>
+        <h2>Meilleur Film</h2>
         <div id="bestMovieDetails" class="best-movie-layout">
             <!-- Movie details will be populated dynamically -->
         </div>
     </section>
 
-    <!-- Top Rated Movies Section -->
-    <section id="topRatedSection" class="glass-box movie-carousel">
-        <h2></h2>
-        <div class="arrow prev"></div>
-        <div id="topRatedMovies" class="carousel-items">
-            <!-- Top rated movies will be populated dynamically -->
+    <!-- Movie Carousel Section -->
+    <section id="topRatedMovies" class="glass-box movie-carousel">
+        <h2>Films les mieux notés</h2>
+        <div class="carousel-wrapper">
+            <button class="prev-button">&#10094;</button>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <!-- Movies will be populated dynamically -->
+                </div>
+            </div>
+            <button class="next-button">&#10095;</button>
         </div>
-        <div class="arrow next"></div>
     </section>
 
-    <div id="categorySection">
-        <!-- Category 1 Section -->
-        <section class="category1Movies glass-box movie-carousel" id="category1Movies">
-            <h2 id="category1Title" class="category1Title">Sci-Fi</h2>
-            <div class="arrow prev"></div>
-            <div class="categoryMovies carousel-items">
-                <!-- Category 1 movies will be populated dynamically -->
+    <!-- Movie Categories Section -->
+    <div id="categoriesSection">
+        <!-- Category 1 -->
+        <section class="category-movies glass-box movie-carousel" id="category1Movies">
+            <h2 id="category1Title">Catégorie 1</h2>
+            <div class="carousel-wrapper">
+                <button class="prev-button">&#10094;</button>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <!-- Movies will be populated dynamically -->
+                    </div>
+                </div>
+                <button class="next-button">&#10095;</button>
             </div>
-            <div class="arrow next"></div>
         </section>
-
-        <!-- Category 2 Section -->
-        <section class="category2Movies glass-box movie-carousel" id="category2Movies">
-            <h2 id="category2Title" class="category2Title">Tragique Comédie</h2>
-            <div class="arrow prev"></div>
-            <div class="categoryMovies carousel-items">
-                <!-- Category 2 movies will be populated dynamically -->
+        <!-- Repeat for other categories -->
+        <!-- Category 2 -->
+        <section class="category-movies glass-box movie-carousel" id="category2Movies">
+            <h2 id="category2Title">Catégorie 2</h2>
+            <div class="carousel-wrapper">
+                <button class="prev-button">&#10094;</button>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <!-- Movies will be populated dynamically -->
+                    </div>
+                </div>
+                <button class="next-button">&#10095;</button>
             </div>
-            <div class="arrow next"></div>
         </section>
-
-        <!-- Category 3 Section -->
-        <section class="category3Movies glass-box movie-carousel" id="category3Movies">
-            <h2 id="category3Title" class="category3Title">Comédie</h2>
-            <div class="arrow prev"></div>
-            <div class="categoryMovies carousel-items">
-                <!-- Category 3 movies will be populated dynamically -->
+        <!-- Category 3 -->
+        <section class="category-movies glass-box movie-carousel" id="category3Movies">
+            <h2 id="category3Title">Catégorie 3</h2>
+            <div class="carousel-wrapper">
+                <button class="prev-button">&#10094;</button>
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <!-- Movies will be populated dynamically -->
+                    </div>
+                </div>
+                <button class="next-button">&#10095;</button>
             </div>
-            <div class="arrow next"></div>
-        </section>
-        
+            
     </div>
 </main>
 
 <!-- Movie Modal -->
-<div id="movieModal" class="modal" style="display: none;">
-    <!-- Modal content here -->
+<div id="movieModal" class="modal">
+    <div class="modal-content">
+    <!-- Modal content will be populated dynamically -->
+    </div>
 </div>
-  
+
 <script src="script.js"></script>
 </body>
 </html>

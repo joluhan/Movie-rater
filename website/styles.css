@@ -7,7 +7,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Header */
+/* Header Styles */
 .sticky-header {
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,8 @@ body {
     padding: 1rem;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 1000;
+    background-color: #333;
 }
 
 .site-name {
@@ -23,25 +24,30 @@ body {
     font-weight: bold;
 }
 
-.header-buttons a {
+.header-buttons {
+    display: flex;
+}
+
+.header-buttons .button {
     text-decoration: none;
+    color: #fff;
+    background-color: #444;
+    padding: 0.5rem 1rem;
+    margin-right: 10px; /* 10px gap between buttons */
+    border: none;
+    cursor: pointer;
 }
 
-.header-buttons button:hover {
-    background-color: #ffffff;
-    color: #000;
+.header-buttons .button:hover {
+    background-color: #555;
 }
 
-/* Main Content */
+/* Main Content Styles */
 main {
-    padding: 2rem;
+    padding: 1rem;
 }
 
-h2 {
-    margin-bottom: 1rem;
-}
-
-/* Glass-like Boxes */
+/* Glass Box Effect */
 .glass-box {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -50,110 +56,196 @@ h2 {
     margin: 1rem 0;
 }
 
-/* Best Movie Layout */
-#bestMovieDetails {
+/* Best Movie Section to take full viewport height */
+#bestMovieSection {
+    margin-top: -10px;
+    height: 90vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
-
-#bestMovieDetails img {
-    flex-basis: 50%;
-}
-
-#bestMovieDetails div {
-    flex-basis: 50%;
-    padding-left: 1rem;
-}
-
-/* Movie Section */
-.movie {
-    flex: 1;
-    min-width: calc(5% - 1rem);
     text-align: center;
-    margin: 5px;
+}
+#bestMovieSection img,
+#bestMovieSection .movie-title,
+#bestMovieSection .summary {
+    margin-bottom: 2rem; /* Adjust the margin as needed */
+}
+/* Ensure the Best Movie content is vertically ordered and centered */
+#bestMovieDetails {
+    text-align: center;
+}
+#bestMovieSection img {
+    width: 30%;
+    height: auto;
 }
 
-/* Carousel Styling */
-.categoryMovies {
+/* Title case for 'Films Les Mieux Notés' */
+#topRatedSection h2 {
+    text-transform: capitalize;
+}
+
+/* Movie Category Styles */
+.category-movies h2 {
+    margin-bottom: 1rem;
+}
+
+.category-movies .carousel {
+    justify-content: space-between;
+}
+
+.category-movies .carousel-item {
+    flex: 0 0 25%; /* Adjust to show 4 items at a time */
+}
+
+/* Movie Details Button */
+.movie-details {
+    text-align: center;
+    margin-top: 1rem; /* Space between the title and the button */
+}
+
+
+.movie-details button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #444;
+    padding: 0.5rem 1rem;
+    margin-right: 10px; /* 10px gap between buttons */
+    border: none;
+    cursor: pointer;
+}
+
+.movie-details button:hover {
+    background-color: #555;
+}
+
+
+/* Carousel Styles */
+.movie-carousel {
     position: relative;
+}
+
+.carousel-wrapper {
     display: flex;
+    align-items: center;
+    justify-content: center; /* Center carousel content */
+    position: relative;
+}
+
+.carousel-container {
+    overflow: hidden;
+    margin: 0 35px; /* Give space for the arrows */
+}
+
+.carousel {
+    display: flex;
+    gap: 1rem;
+}
+.carousel-item {
+    flex: 0 0 calc(25% - 1rem); /* Adjust the percentage and subtract the gap */
+}
+
+.carousel {
     overflow: hidden;
 }
 
-.arrow {
+.carousel > * {
+    min-width: calc(25% - 1rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel .movie-image {
+    height: 100%;
+    width: 100%;
+}
+
+.carousel .movie-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prev-button,
+.next-button {
     cursor: pointer;
-    position: absolute;
-    top: 50%;
-    font-size: 2rem;
-    z-index: 1;
-    opacity: 0.6;
-}
-
-/* .prev {
-    left: 0;
-}
-
-.next {
-    right: 0;
-} */
-
-.arrow-left, .arrow-right {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    z-index: 10;
-    display: block; /* Changed from none */
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.arrow-left {
-    left: 0;
-}
-
-.arrow-right {
-    right: 0;
-}
-
-/* Modal styles */
-#movieModal {
-    display: none;
-    flex-direction: row;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: #333;
+    border: none;
     color: white;
-    padding: 20px;
-    padding-top: 5%;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+.prev-button:hover, .next-button:hover {
+    background-color: #555;
+}
+
+.prev-button {
+    left: 0; /* Align with the left edge of the container */
+    margin-left: -25px; /* Move outside the container */
+}
+
+.next-button {
+    right: 0; /* Align with the right edge of the container */
+    margin-right: -25px; /* Move outside the container */
+}
+
+
+
+/* Modal Styles */
+.modal {
+    display: none;
     position: fixed;
-    top: 0;
+    z-index: 2000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    z-index: 9999;
-    max-width: 97%; /* Limit the modal width */
-    margin: auto; /* Center the modal */
-    top: 1%;
-  }
-  
-  .movie-image {
-    /* max-width: 30%; */
-    margin-right: 20px;
-    width: auto; /* Set image width to 50% */
-    height: 50%; /* Maintain aspect ratio */
-  }
-  
-  .movie-info {
-    flex-grow: 1;
-  }
-  
-  #closeModal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background-color: red;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 80%;
+}
+
+/* Responsive Design Adjustments */
+@media (max-width: 768px) {
+    .header-buttons .button {
+        padding: 0.3rem 0.6rem;
+        margin-right: 5px; /* Adjust spacing for smaller screens */
+    }
+
+    .prev-button,
+    .next-button {
+        padding: 5px;
+        left: 5px; /* Adjust for smaller screens */
+        right: 5px; /* Adjust for smaller screens */
+    }
+
+    .carousel-container {
+        margin: 0 25px; /* Adjust for smaller screens */
+    }
+
+    .carousel {
+        gap: 0.5rem;
+    }
+
+    .modal-content {
+        margin: 15% auto;
+        width: 90%;
+    }
+
+    .category-movies .carousel-item {
+        flex: 0 0 48%; /* Show 2 items on smaller screens */
+    }
+}
